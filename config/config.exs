@@ -26,6 +26,9 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :fcmex,
+  server_key: "AAAAcFP3GWE:APA91bEmZu4zem2_sNog0RCy3joapdYELOm0YWp91dbe0sEifIyPq-cOIRiROu5Ui2g9-mEEKnOLZjXGEt5jtd_a4E1N_TBEYuhw3C7aY4lXMespnyUTB7gaThBkDROVbhWuCoz1Vn1d"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

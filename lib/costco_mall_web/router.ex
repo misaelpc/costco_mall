@@ -17,13 +17,13 @@ defmodule CostcoMallWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/carts", CartController, except: [:new, :edit]
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", CostcoMallWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", CostcoMallWeb do
+    pipe_through :api
+    resources "/carts", CartController, except: [:new, :edit]
+  end
 
   # Enables LiveDashboard only for development
   #

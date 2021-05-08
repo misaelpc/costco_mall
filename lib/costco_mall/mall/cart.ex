@@ -14,5 +14,6 @@ defmodule CostcoMall.Mall.Cart do
     cart
     |> cast(attrs, [:count, :total])
     |> validate_required([:count, :total])
+    |> validate_inclusion(:total, 1..10)
   end
 end

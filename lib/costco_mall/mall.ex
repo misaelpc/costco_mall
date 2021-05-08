@@ -3,7 +3,7 @@ defmodule CostcoMall.Mall do
   The Mall context.
   """
 
-  import Ecto.Query, warn: false
+  import Ecto.Query
   alias CostcoMall.Repo
 
   alias CostcoMall.Mall.Cart
@@ -37,6 +37,12 @@ defmodule CostcoMall.Mall do
   """
   def get_cart!(id), do: Repo.get!(Cart, id)
 
+  def get_carts_non_empty do
+    query = from c in Cart,
+            where: c.count > 0,
+            select: c.total
+    Repo.all(query)
+  end
   @doc """
   Creates a cart.
 
