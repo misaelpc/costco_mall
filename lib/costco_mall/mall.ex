@@ -38,11 +38,25 @@ defmodule CostcoMall.Mall do
   def get_cart!(id), do: Repo.get!(Cart, id)
 
   def get_carts_non_empty do
-    query = from c in Cart,
-            where: c.count > 0,
-            select: c.total
+    query =
+     entity()
+     |> count_greater()
+     |> select()
+
     Repo.all(query)
   end
+
+  def entity() do
+    from c in Cart
+  end
+  def count_greater(query) do
+    from c in query, where: c.count > 0
+  end
+
+  def select(query) do
+    from c in query, select: c.total
+  end
+
   @doc """
   Creates a cart.
 
