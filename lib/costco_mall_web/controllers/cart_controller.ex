@@ -12,6 +12,7 @@ defmodule CostcoMallWeb.CartController do
   end
 
   def create(conn, %{"cart" => cart_params}) do
+    IO.inspect(conn)
     with {:ok, %Cart{} = cart} <- Mall.create_cart(cart_params) do
       conn
       |> put_status(:created)

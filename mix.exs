@@ -10,7 +10,15 @@ defmodule CostcoMall.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      releases: releases()
+    ]
+  end
+
+  defp releases do
+    [costco_mall_web: [
+      steps: [:assemble, :tar]
+      ]
     ]
   end
 
@@ -45,7 +53,8 @@ defmodule CostcoMall.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:fcmex, "~> 0.5.0"}
+      {:fcmex, "~> 0.5.0"},
+      {:prom_ex, "~> 1.4.0"}
     ]
   end
 
